@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dewi Catering & Events - Jasa Catering & Acara Profesional</title>
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS for additional styling -->
+    <style>
+        :root {
+            --soft-pink: #f8e1e7;
+            --rose: #e63973;
+            --light-gray: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-input:focus {
+            border-color: #e63973;
+            box-shadow: 0 0 0 3px rgba(230, 57, 115, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: #e63973;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d42a62;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 115, 0.3);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: #e63973;
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        /* Menu Tab Styles */
+        .menu-tab {
+            background-color: #e5e7eb;
+            color: #4b5563;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .menu-tab.active {
+            background-color: #e63973;
+            color: white;
+            border-color: #e63973;
+        }
+        
+        .menu-tab:hover {
+            background-color: #f3f4f6;
+            border-color: #e63973;
+        }
+        
+        .menu-tab.active:hover {
+            background-color: #d42a62;
+        }
+        
+        .menu-section {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .menu-section.hidden {
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Fixed Responsive Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="bg-rose-500 text-white p-2 rounded-lg mr-3">
+                        <i class="fas fa-utensils text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dewi Catering & Events</h1>
+                        <p class="text-sm text-gray-600">Profesional • Elegant • Terpercaya</p>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-rose-500 font-medium transition">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:text-rose-500 font-medium transition">Tentang Kami</a>
+                    <a href="#menu" class="text-gray-700 hover:text-rose-500 font-medium transition">Menu</a>
+                    <a href="#order" class="text-gray-700 hover:text-rose-500 font-medium transition">Pesan Sekarang</a>
+                    <a href="#contact" class="text-gray-700 hover:text-rose-500 font-medium transition">Kontak</a>
+                </div>
+            </div>
+            
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-lg p-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-rose-500 font-medium transition">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:text-rose-500 font-medium transition">Tentang Kami</a>
+                    <a href="#menu" class="text-gray-700 hover:text-rose-500 font-medium transition">Menu</a>
+                    <a href="#order" class="text-gray-700 hover:text-rose-500 font-medium transition">Pesan Sekarang</a>
+                    <a href="#contact" class="text-gray-700 hover:text-rose-500 font-medium transition">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-section pt-24 pb-20 md:pt-32 md:pb-28 text-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Catering Elegant untuk Acara Spesial Anda</h2>
+                <p class="text-xl mb-8 opacity-90">Kami menyediakan layanan catering profesional untuk pernikahan, acara perusahaan, acara instansi pemerintah/swasta, acara sekolah, dan berbagai acara spesial lainnya. Rasa autentik, presentasi menarik, dan layanan terbaik.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#menu" class="btn-primary text-white font-semibold py-3 px-8 rounded-lg text-center">Lihat Menu</a>
+                    <a href="#order" class="bg-white text-rose-600 font-semibold py-3 px-8 rounded-lg text-center hover:bg-gray-100 transition">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800">Tentang Kami</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Dewi Catering & Events telah melayani berbagai acara sejak 2015. Kami mengutamakan kualitas bahan, cita rasa otentik, dan presentasi yang memukau untuk membuat acara Anda tak terlupakan.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-xl bg-soft-pink">
+                    <div class="text-rose-500 text-4xl mb-4">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kualitas Terbaik</h3>
+                    <p class="text-gray-700">Menggunakan bahan-bahan segar dan berkualitas tinggi dengan resep khusus yang telah teruji.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-xl bg-soft-pink">
+                    <div class="text-rose-500 text-4xl mb-4">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Pengalaman</h3>
+                    <p class="text-gray-700">Telah melayani lebih dari 500 acara mulai dari pernikahan, syukuran, hingga acara perusahaan.</p>
+                </div>
+                
+                <div class="text-center p-6 rounded-xl bg-soft-pink">
+                    <div class="text-rose-500 text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kepuasan Pelanggan</h3>
+                    <p class="text-gray-700">Kami mengutamakan kepuasan pelanggan dengan layanan ramah dan profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800">Menu Katering</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Pilih menu katering yang sesuai dengan kebutuhan acara Anda. Setiap paket dan satuan dapat disesuaikan sesuai permintaan, baik harga maupun isiannya.</p>
+            </div>
+            
+            <!-- Menu Tabs -->
+            <div class="flex justify-center mb-12 gap-4">
+                <button id="tab-paketan" class="menu-tab active px-8 py-3 rounded-lg font-semibold transition" data-tab="paketan">
+                    <i class="fas fa-box mr-2"></i> Menu Paketan
+                </button>
+                <button id="tab-satuan" class="menu-tab px-8 py-3 rounded-lg font-semibold transition" data-tab="satuan">
+                    <i class="fas fa-cube mr-2"></i> Menu Satuan
+                </button>
+            </div>
+            
+            <!-- Menu Paketan Section -->
+            <div id="menu-paketan" class="menu-section active">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Paket Tumpeng -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-tumpeng/tumpeng-3.jpeg" alt="Paket Tumpeng" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Tumpeng</h3>
+                            <p class="text-gray-600 mb-4">Paket lengkap dengan nasi kuning, lauk pauk, dan pelengkap lainnya untuk acara spesial.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Nasi Kuning</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Ayam Goreng</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Telur Dadar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Kering Tempe</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Mie Goreng</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Lalapan</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sambel</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 350.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Tumpeng" data-price="350000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paket Tumpeng Nasi Putih Sambelan-->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-tumpeng/tumpeng-5.jpeg" alt="Paket Tumpeng" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Tumpeng Nasi Putih Sambelan</h3>
+                            <p class="text-gray-600 mb-4">Paket lengkap dengan nasi putih, lauk pauk, dan pelengkap lainnya untuk acara spesial.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Nasi Putih</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Ayam Goreng</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Telur Dadar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Ikan Asin</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Oseng Tempe</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Gudangan</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sambal</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sambel</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 300.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Tumpeng Nasi Putih" data-price="300000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paket Snack Tampahan -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-snack-tampahan/snack-tampahan-1.jpeg" alt="Paket Snack Tampahan" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Snack Tampahan</h3>
+                            <p class="text-gray-600 mb-4">Berbagai pilihan snack dan kue untuk melengkapi acara Anda dengan cita rasa khas.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sesuai Request</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 150.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Snack Tampahan" data-price="150000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paket Angkringan Tampahan -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-angkringan/paket-angkringan.jpeg" alt="Paket Angkringan Tampahan" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Angkringan Tampahan</h3>
+                            <p class="text-gray-600 mb-4">Menu berkumpul dengan minuman hangat, angkringan untuk santai bersama.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sesuai Request</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 150.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Angkringan Tampahan" data-price="150000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paket Ayam/Bebek Utuh -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-utuh/paket-ayam-utuh.jpeg" alt="Paket Ayam/Bebek Utuh" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Ayam / Bebek Utuh</h3>
+                            <p class="text-gray-600 mb-4">Menu dengan ayam atau bebek utuh (Goreng/Bakar) yang disajikan dengan presentasi cantik dan lezat.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu Sesuai Request :</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Ayam Negeri mulai Rp 75.000</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Ayam Kampung mulai Rp 110.000</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Bebek mulai Rp 75.000</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Lalapan & Sambal</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 75.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Ayam/Bebek Utuh" data-price="75000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paket Sate & Gado-gado -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/paket-sate-gado2/paket-gado2.jpeg" alt="Paket Sate & Gado-gado" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Paket Sate & Gado-gado</h3>
+                            <p class="text-gray-600 mb-4">Kombinasi lezat antara sate yang sempurna dan gado-gado dengan bumbu khas yang autentik.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sate Ayam / Sapi</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Gado-gado Lengkap</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Bumbu Kacang Spesial</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Nasi & Pelengkap</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 75.000</span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Sate & Gado-gado" data-price="75000" data-unit="paket">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Menu Satuan Section -->
+            <div id="menu-satuan" class="menu-section hidden">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Nasi Box -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/nasi box/nasi-box-3.jpeg" alt="Nasi Box" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Nasi Box</h3>
+                            <p class="text-gray-600 mb-4">Paket nasi dalam kotak dengan pilihan lauk yang beragam dan praktis untuk dibawa.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Nasi Putih / Kuning</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Pilihan Lauk Utama</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sayuran Segar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sambal & Acar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Atau Sesuai Request</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 15.000<span class="text-sm text-gray-500">/box</span></span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Nasi Box" data-price="15000" data-unit="box">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Snack Box -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/snack/snack-5.jpeg" alt="Snack Box" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Snack Box</h3>
+                            <p class="text-gray-600 mb-4">Koleksi snack dan kue dalam satu paket praktis, sempurna untuk acara atau oleh-oleh.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Kue Pilihan</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Pastry Segar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Snack Bervariasi</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Kemasan Premium</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sesuai Request Jumlah & Isiannya</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 6.000<span class="text-sm text-gray-500">/pcs</span></span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Snack Box" data-price="6000" data-unit="box">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rice Bowl -->
+                    <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="assets/images/gallery/rice bowl/rice-bowl.jpeg" alt="Rice Bowl" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Rice Bowl</h3>
+                            <p class="text-gray-600 mb-4">Nasi dalam mangkuk dengan berbagai pilihan topping yang enak dan bergizi untuk makan siang.</p>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2 text-gray-800">Menu termasuk:</h4>
+                                <ul class="text-gray-600 space-y-1 text-sm">
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Nasi Putih</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Topping Pilihan</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Sayuran Segar</li>
+                                    <li><i class="fas fa-check text-green-500 mr-2"></i>Kuah/Saus Spesial</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-rose-600">mulai Rp 10.000<span class="text-sm text-gray-500">/bowl</span></span>
+                                <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Rice Bowl" data-price="10000" data-unit="bowl">Pilih</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600">* Harga dapat berubah tergantung jumlah tamu, lokasi, dan permintaan khusus. Silakan hubungi kami untuk penawaran khusus.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Order Form Section -->
+    <section id="order" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800">Form Pemesanan</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto mt-6">Isi formulir di bawah ini untuk memesan layanan katering kami. Pesanan Anda akan diproses melalui WhatsApp untuk komunikasi yang lebih cepat.</p>
+                </div>
+                
+                <form id="order-form" class="bg-gray-50 rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2" for="name">Nama Lengkap *</label>
+                        <input type="text" id="name" name="name" required 
+                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2" for="phone">Nomor WhatsApp *</label>
+                        <input type="tel" id="phone" name="phone" required 
+                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                               placeholder="+6281234567890">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2" for="address">Alamat Acara *</label>
+                        <textarea id="address" name="address" rows="3" required 
+                                  class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                                  placeholder="Tuliskan alamat lengkap tempat acara"></textarea>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="date">Tanggal Acara *</label>
+                            <input type="date" id="date" name="date" required 
+                                   class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="guests">Jumlah Tamu *</label>
+                            <input type="number" id="guests" name="guests" min="10" required 
+                                   class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                                   placeholder="Contoh: 100">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-3">Pilih Paket Menu *</label>
+                        
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Menu Paketan:</h4>
+                                <div class="space-y-2 ml-2">
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-tumpeng" name="menu" value="Paket Tumpeng" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-tumpeng" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Tumpeng Nasi Kuning</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 350.000</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-tumpeng" name="menu" value="Paket Tumpeng" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-tumpeng" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Tumpeng Nasi Putih</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 350.000</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-snack" name="menu" value="Paket Snack Tambahan" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-snack" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Snack Tampahan</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-angkringan" name="menu" value="Paket Angkringan Tambahan" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-angkringan" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Angkringan Tampahan</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-ayam-bebek" name="menu" value="Paket Ayam/Bebek Utuh" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-ayam-bebek" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Ayam/Bebek Utuh</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 75.000</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-paket-sate-gado" name="menu" value="Paket Sate & Gado-gado" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-paket-sate-gado" class="ml-3 flex-grow">
+                                            <span class="font-medium">Paket Sate & Gado-gado</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2 mt-4">Menu Satuan:</h4>
+                                <div class="space-y-2 ml-2">
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-nasi-box" name="menu" value="Nasi Box" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-nasi-box" class="ml-3 flex-grow">
+                                            <span class="font-medium">Nasi Box</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 15.000/box</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-snack-box" name="menu" value="Snack Box" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-snack-box" class="ml-3 flex-grow">
+                                            <span class="font-medium">Snack Box</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 6.000/pcs</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
+                                        <input type="radio" id="menu-rice-bowl" name="menu" value="Rice Bowl" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                        <label for="menu-rice-bowl" class="ml-3 flex-grow">
+                                            <span class="font-medium">Rice Bowl</span>
+                                            <span class="text-rose-600 font-bold ml-2">mulai Rp 10.000/bowl</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <label class="block text-gray-700 font-medium mb-2" for="notes">Catatan Tambahan</label>
+                        <textarea id="notes" name="notes" rows="4" 
+                                  class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                                  placeholder="Tuliskan permintaan khusus, alergi makanan, atau detail tambahan lainnya"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <a href="https://wa.me/6287739802296?text=Halo%20Dewi%20Catering%20%26%20Events,%20saya%20ingin%20melakukan%20pemesanan."
+                            target="_blank"
+                            class="btn-primary text-white font-bold py-4 px-10 rounded-lg text-lg w-full md:w-auto inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+                        </a>
+                        <p class="text-gray-500 text-sm mt-4">
+                            Dengan mengklik tombol di atas, Anda akan diarahkan ke WhatsApp untuk mengonfirmasi pesanan.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="py-16 bg-gray-800 text-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Kontak Kami</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-rose-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Alamat</h4>
+                                <p class="text-gray-300">Karangasem RT03/RW08 Pulutan Wonosari</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-rose-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Telepon/WhatsApp</h4>
+                                <p class="text-gray-300">+62 877 3980 2296</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-rose-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-300">dewimelly2570@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">Jam Operasional</h4>
+                        <p class="text-gray-300">Senin - Jumat: 08:00 - 17:00</p>
+                        <p class="text-gray-300">Sabtu: 08:00 - 15:00</p>
+                        <p class="text-gray-300">Minggu & Hari Libur: Tutup</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Tautan Cepat</h3>
+                    
+                    <div class="space-y-3">
+                        <a href="#home" class="block text-gray-300 hover:text-white transition">Beranda</a>
+                        <a href="#about" class="block text-gray-300 hover:text-white transition">Tentang Kami</a>
+                        <a href="#menu" class="block text-gray-300 hover:text-white transition">Menu Katering</a>
+                        <a href="#order" class="block text-gray-300 hover:text-white transition">Pesan Online</a>
+                        <a href="#contact" class="block text-gray-300 hover:text-white transition">Kontak</a>
+                    </div>
+
+                    <div class="mt-8"> 
+                        <h4 class="font-medium mb-4">Ikuti Kami</h4>
+                        <div class="flex space-x-4">
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/dewimelly83?igsh=OG85dmN5OW1mYWxo" 
+                            target="_blank"
+                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <!-- TikTok -->
+                            <a href="https://www.tiktok.com/@danielregan23?_r=1&_t=ZS-92yG5aIrRlA" 
+                            target="_blank"
+                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+
+                            <!-- Facebook -->
+                            <a href="https://web.facebook.com/dewykenny.dewykenny?locale=id_ID" 
+                            target="_blank"
+                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>                           
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Info & Promo</h3>
+                    <p class="text-gray-300 mb-6">Dapatkan informasi tentang promo terbaru dan menu spesial dari Dewi Catering & Events.</p>
+                    
+                    <form id="newsletter-form" class="space-y-3">
+                        <input type="email" placeholder="Masukkan email Anda" required
+                               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                        <button type="submit" class="btn-primary text-white font-medium py-3 px-6 rounded-lg w-full">Berlangganan</button>
+                    </form>
+                    
+                    <div class="mt-8 p-4 bg-gray-900 rounded-lg">
+                        <h4 class="font-medium mb-2">Layanan Cepat</h4>
+                        <p class="text-gray-300 text-sm">Pesan minimal 3 hari sebelum acara untuk mendapatkan penawaran terbaik. Konsultasi gratis untuk acara dengan lebih dari 100 tamu.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2026 Dewi Catering & Events. All rights reserved.</p>
+                <p class="mt-2 text-sm">Website by JustHidy Web Developer</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287739802296?text=Halo%20Dewi%20Catering,%20saya%20ingin%20bertanya%20tentang%20layanan%20catering%20dan%20events" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-40">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-3');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Menu selection buttons
+        document.querySelectorAll('.menu-select').forEach(button => {
+            button.addEventListener('click', function() {
+                const menuName = this.getAttribute('data-menu');
+                const menuPrice = this.getAttribute('data-price');
+                const menuUnit = this.getAttribute('data-unit') || 'paket';
+                
+                // Set the radio button
+                const radioId = `menu-${menuName.toLowerCase().replace(' ', '-')}`;
+                const radioButton = document.getElementById(radioId);
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
+                
+                // Scroll to order form
+                document.getElementById('order').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Show confirmation toast dengan unit yang sesuai
+                showToast(`Anda memilih ${menuName} - Rp ${parseInt(menuPrice).toLocaleString('id-ID')}/${menuUnit}`);
+            });
+        });
+        
+        // Order form submission
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const date = document.getElementById('date').value;
+            const guests = document.getElementById('guests').value;
+            const menu = document.querySelector('input[name="menu"]:checked');
+            const notes = document.getElementById('notes').value;
+            
+            // Validate required fields
+            if (!name || !phone || !address || !date || !guests || !menu) {
+                showToast('Harap isi semua bidang yang wajib diisi!', 'error');
+                return;
+            }
+            
+            // Format date
+            const formattedDate = new Date(date).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Create WhatsApp message
+            const message = `Halo Dewi Catering & Events,
+
+Saya ingin memesan layanan katering dengan detail berikut:
+
+Nama: ${name}
+Nomor WhatsApp: ${phone}
+Alamat Acara: ${address}
+Tanggal Acara: ${formattedDate}
+Jumlah Tamu: ${guests} orang
+Paket Menu: ${menu.value}
+Catatan Tambahan: ${notes || 'Tidak ada'}
+
+Mohon info mengenai ketersediaan dan perkiraan biaya. Terima kasih.`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappNumber = '6287739802296'; // Ganti dengan nomor WhatsApp bisnis sebenarnya
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            showToast('Pesanan Anda sedang diproses. Anda akan diarahkan ke WhatsApp.', 'success');
+            
+            // Reset form (optional)
+            // this.reset();
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            
+            if (emailInput.value) {
+                showToast('Terima kasih telah berlangganan newsletter kami!', 'success');
+                emailInput.value = '';
+            }
+        });
+        
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            // Remove existing toast if any
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast-notification fixed top-6 right-6 px-6 py-4 rounded-lg shadow-lg text-white z-50 transform transition-all duration-300 ${
+                type === 'error' ? 'bg-red-500' : 
+                type === 'success' ? 'bg-green-500' : 
+                'bg-blue-500'
+            }`;
+            toast.textContent = message;
+            
+            // Add to page
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+            }, 3000);
+            
+            // Remove toast after animation
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 3500);
+        }
+        
+        // Set minimum date to today for event date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+        
+        // Initialize form date to 3 days from now
+        const threeDaysFromNow = new Date();
+        threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
+        document.getElementById('date').value = threeDaysFromNow.toISOString().split('T')[0];
+        
+        // Pre-fill with example data for demo (remove in production)
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('guests').value = '';
+        document.getElementById('menu-paketan').checked = true;
+        
+        // Menu Tab Functionality
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.menu-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Hide all menu sections
+                document.querySelectorAll('.menu-section').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding menu section
+                document.getElementById(`menu-${tabName}`).classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
