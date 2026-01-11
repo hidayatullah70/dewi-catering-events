@@ -13,338 +13,338 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Custom CSS for additional styling -->
-    <style>
-        :root {
-            --soft-pink: #f8e1e7;
-            --rose: #e63973;
-            --light-gray: #f5f5f5;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #1e293b !important;
-        }
-        
-        .dark-mode .bg-gray-50 {
-            background-color: #0f172a !important;
-        }
-        
-        .dark-mode .bg-gray-800 {
-            background-color: #111827 !important;
-        }
-        
-        .dark-mode .text-gray-800 {
-            color: #e2e8f0 !important;
-        }
-        
-        .dark-mode .text-gray-700 {
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .text-gray-600 {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .text-gray-300 {
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .text-gray-400 {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .bg-gray-900 {
-            background-color: #0f172a !important;
-        }
-        
-        .dark-mode .border-gray-200 {
-            border-color: #334155 !important;
-        }
-        
-        .dark-mode .border-gray-300 {
-            border-color: #475569 !important;
-        }
-        
-        .dark-mode .bg-gray-700 {
-            background-color: #334155 !important;
-        }
-        
-        .dark-mode input,
-        .dark-mode textarea,
-        .dark-mode select {
-            background-color: #1e293b !important;
-            border-color: #475569 !important;
-            color: #e2e8f0 !important;
-        }
-        
-        .dark-mode input::placeholder,
-        .dark-mode textarea::placeholder {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .menu-tab {
-            background-color: #334155 !important;
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .menu-tab.active {
-            background-color: #e63973 !important;
-            color: white !important;
-        }
-        
-        .dark-mode .menu-tab:hover {
-            background-color: #475569 !important;
-        }
-        
-        .dark-mode .menu-card {
-            background-color: #1e293b !important;
-        }
-        
-        .dark-mode .bg-soft-pink {
-            background-color: #2d3748 !important;
-        }
-        
-        .dark-mode .navbar-scrolled {
-            background-color: rgba(15, 23, 42, 0.95) !important;
-        }
-        
-        .navbar-scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode .navbar-scrolled {
-            background-color: rgba(15, 23, 42, 0.95) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
-                        url('assets/images/gallery/logo-abu-muda.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Efek parallax */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background-color: #e63973; /* Fallback warna jika gambar gagal load */
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                background-attachment: scroll; /* Hilangkan efek parallax di mobile untuk performa */
-                background-position: center center;
-                min-height: 80vh;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-section {
-                min-height: 70vh;
-                background-size: cover;
-                background-position: center center;
-            }
-        }
-        
-        .menu-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode .menu-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .form-input:focus {
-            border-color: #e63973;
-            box-shadow: 0 0 0 3px rgba(230, 57, 115, 0.2);
-        }
-        
-        .btn-primary {
-            background-color: #e63973;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #d42a62;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(230, 57, 115, 0.3);
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: #e63973;
-            bottom: -10px;
-            left: 20%;
-            border-radius: 2px;
-        }
-        
-        /* Menu Tab Styles */
-        .menu-tab {
-            background-color: #e5e7eb;
-            color: #4b5563;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        
-        .menu-tab.active {
-            background-color: #e63973;
-            color: white;
-            border-color: #e63973;
-        }
-        
-        .menu-tab:hover {
-            background-color: #f3f4f6;
-            border-color: #e63973;
-        }
-        
-        .menu-tab.active:hover {
-            background-color: #d42a62;
-        }
-        
-        .menu-section {
-            animation: fadeIn 0.3s ease-in;
-        }
-        
-        .menu-section.hidden {
-            display: none;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-    /* CSS tambahan untuk form */
-    .form-input {
-        transition: all 0.3s ease;
+<style>
+    :root {
+        --soft-pink: #f8e1e7;
+        --burgundy: #79022a;
+        --light-gray: #f5f5f5;
     }
-
-    .form-input:focus {
-        border-color: #e63973;
-        box-shadow: 0 0 0 3px rgba(230, 57, 115, 0.2);
-        outline: none;
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        scroll-behavior: smooth;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    .border-red-500 {
-        border-color: #f87171 !important;
-        animation: shake 0.5s ease-in-out;
+    
+    /* Dark mode styles */
+    body.dark-mode {
+        background-color: #0f172a;
+        color: #e2e8f0;
     }
-
-    .border-yellow-500 {
-        border-color: #fbbf24 !important;
+    
+    .dark-mode .bg-white {
+        background-color: #1e293b !important;
     }
-
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    
+    .dark-mode .bg-gray-50 {
+        background-color: #0f172a !important;
     }
-
-    /* Style untuk radio button yang lebih menarik */
-    input[type="radio"]:checked + label {
-        background-color: rgba(230, 57, 115, 0.05);
+    
+    .dark-mode .bg-gray-800 {
+        background-color: #111827 !important;
     }
-
-    .dark-mode input[type="radio"]:checked + label {
-        background-color: rgba(230, 57, 115, 0.1) !important;
+    
+    .dark-mode .text-gray-800 {
+        color: #e2e8f0 !important;
     }
-
-    input[type="radio"]:checked + label .font-medium {
-        color: #e63973;
+    
+    .dark-mode .text-gray-700 {
+        color: #cbd5e1 !important;
     }
-
-    /* Style untuk tombol WhatsApp */
-    .btn-primary-whatsapp {
-        background-color: #25D366; /* WhatsApp green */
-        transition: all 0.3s ease;
-    }
-
-    .btn-primary-whatsapp:hover {
-        background-color: #128C7E;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-primary-whatsapp:active {
-        transform: translateY(0);
-    }
-
-    /* Style untuk label radio yang bisa diklik */
-    label.cursor-pointer:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-    }
-
-    .dark-mode label.cursor-pointer:hover {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    /* Dark Mode Toggle Button di Navbar */
-    .dark-mode-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: #4b5563;
-        margin-right: 12px;
-    }
-
-    .dark-mode-btn:hover {
-        transform: rotate(15deg);
-        color: #e63973;
-    }
-
-    .dark-mode .dark-mode-btn {
-        color: #cbd5e1;
-    }
-
-    .dark-mode .dark-mode-btn:hover {
-        color: #fbbf24;
-    }
-
-    /* Style untuk teks di dark mode */
-    .dark-mode .text-gray-500 {
+    
+    .dark-mode .text-gray-600 {
         color: #94a3b8 !important;
     }
-
-    .dark-mode .border-gray-700 {
+    
+    .dark-mode .text-gray-300 {
+        color: #cbd5e1 !important;
+    }
+    
+    .dark-mode .text-gray-400 {
+        color: #94a3b8 !important;
+    }
+    
+    .dark-mode .bg-gray-900 {
+        background-color: #0f172a !important;
+    }
+    
+    .dark-mode .border-gray-200 {
+        border-color: #334155 !important;
+    }
+    
+    .dark-mode .border-gray-300 {
         border-color: #475569 !important;
     }
-
-    /* Smooth transition for all elements */
-    * {
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    
+    .dark-mode .bg-gray-700 {
+        background-color: #334155 !important;
     }
-    </style>
+    
+    .dark-mode input,
+    .dark-mode textarea,
+    .dark-mode select {
+        background-color: #1e293b !important;
+        border-color: #475569 !important;
+        color: #e2e8f0 !important;
+    }
+    
+    .dark-mode input::placeholder,
+    .dark-mode textarea::placeholder {
+        color: #94a3b8 !important;
+    }
+    
+    .dark-mode .menu-tab {
+        background-color: #334155 !important;
+        color: #cbd5e1 !important;
+    }
+    
+    .dark-mode .menu-tab.active {
+        background-color: #79022a !important;
+        color: white !important;
+    }
+    
+    .dark-mode .menu-tab:hover {
+        background-color: #475568 !important;
+    }
+    
+    .dark-mode .menu-card {
+        background-color: #1e293b !important;
+    }
+    
+    .dark-mode .bg-soft-pink {
+        background-color: #2d3748 !important;
+    }
+    
+    .dark-mode .navbar-scrolled {
+        background-color: rgba(15, 23, 42, 0.95) !important;
+    }
+    
+    .navbar-scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark-mode .navbar-scrolled {
+        background-color: rgba(15, 23, 42, 0.95) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+                    url('assets/images/gallery/logo-utama.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Efek parallax */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: #79022a; /* Fallback warna jika gambar gagal load */
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            background-attachment: scroll; /* Hilangkan efek parallax di mobile untuk performa */
+            background-position: center center;
+            min-height: 80vh;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero-section {
+            min-height: 70vh;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    
+    .menu-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .menu-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark-mode .menu-card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-input:focus {
+        border-color: #79022a;
+        box-shadow: 0 0 0 3px rgba(121, 2, 42, 0.2);
+    }
+    
+    .btn-primary {
+        background-color: #79022a;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background-color: #670123;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(121, 2, 42, 0.3);
+    }
+    
+    .section-title {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        width: 60%;
+        height: 3px;
+        background-color: #79022a;
+        bottom: -10px;
+        left: 20%;
+        border-radius: 2px;
+    }
+    
+    /* Menu Tab Styles */
+    .menu-tab {
+        background-color: #e5e7eb;
+        color: #4b5563;
+        border: 2px solid transparent;
+        cursor: pointer;
+    }
+    
+    .menu-tab.active {
+        background-color: #79022a;
+        color: white;
+        border-color: #79022a;
+    }
+    
+    .menu-tab:hover {
+        background-color: #f3f4f6;
+        border-color: #79022a;
+    }
+    
+    .menu-tab.active:hover {
+        background-color: #670123;
+    }
+    
+    .menu-section {
+        animation: fadeIn 0.3s ease-in;
+    }
+    
+    .menu-section.hidden {
+        display: none;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+/* CSS tambahan untuk form */
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #79022a;
+    box-shadow: 0 0 0 3px rgba(121, 2, 42, 0.2);
+    outline: none;
+}
+
+.border-red-500 {
+    border-color: #f87171 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+.border-yellow-500 {
+    border-color: #fbbf24 !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Style untuk radio button yang lebih menarik */
+input[type="radio"]:checked + label {
+    background-color: rgba(121, 2, 42, 0.05);
+}
+
+.dark-mode input[type="radio"]:checked + label {
+    background-color: rgba(121, 2, 42, 0.1) !important;
+}
+
+input[type="radio"]:checked + label .font-medium {
+    color: #79022a;
+}
+
+/* Style untuk tombol WhatsApp */
+.btn-primary-whatsapp {
+    background-color: #25D366; /* WhatsApp green */
+    transition: all 0.3s ease;
+}
+
+.btn-primary-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-primary-whatsapp:active {
+    transform: translateY(0);
+}
+
+/* Style untuk label radio yang bisa diklik */
+label.cursor-pointer:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark-mode label.cursor-pointer:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Dark Mode Toggle Button di Navbar */
+.dark-mode-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4b5563;
+    margin-right: 12px;
+}
+
+.dark-mode-btn:hover {
+    transform: rotate(15deg);
+    color: #79022a;
+}
+
+.dark-mode .dark-mode-btn {
+    color: #cbd5e1;
+}
+
+.dark-mode .dark-mode-btn:hover {
+    color: #fbbf24;
+}
+
+/* Style untuk teks di dark mode */
+.dark-mode .text-gray-500 {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .border-gray-700 {
+    border-color: #475569 !important;
+}
+
+/* Smooth transition for all elements */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Fixed Responsive Navbar -->
@@ -360,7 +360,7 @@
                     
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <div class="bg-rose-500 text-white p-2 rounded-lg mr-3">
+                        <div class="bg-burgundy-500 text-white p-2 rounded-lg mr-3">
                             <i class="fas fa-utensils text-xl"></i>
                         </div>
                         <div>
@@ -377,22 +377,22 @@
                 
                 <!-- Desktop menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-rose-500 font-medium transition">Beranda</a>
-                    <a href="#about" class="text-gray-700 hover:text-rose-500 font-medium transition">Tentang Kami</a>
-                    <a href="#menu" class="text-gray-700 hover:text-rose-500 font-medium transition">Menu</a>
-                    <a href="#order" class="text-gray-700 hover:text-rose-500 font-medium transition">Pesan Sekarang</a>
-                    <a href="#contact" class="text-gray-700 hover:text-rose-500 font-medium transition">Kontak</a>
+                    <a href="#home" class="text-gray-800 hover:text-burgundy-500 font-medium transition">Beranda</a>
+                    <a href="#about" class="text-gray-800 hover:text-burgundy-500 font-medium transition">Tentang Kami</a>
+                    <a href="#menu" class="text-gray-800 hover:text-burgundy-500 font-medium transition">Menu</a>
+                    <a href="#order" class="text-gray-800 hover:text-burgundy-500 font-medium transition">Pesan Sekarang</a>
+                    <a href="#contact" class="text-gray-800 hover:text-burgundy-500 font-medium transition">Kontak</a>
                 </div>
             </div>
             
             <!-- Mobile menu (hidden by default) -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-lg p-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-700 hover:text-rose-500 font-medium transition">Beranda</a>
-                    <a href="#about" class="text-gray-700 hover:text-rose-500 font-medium transition">Tentang Kami</a>
-                    <a href="#menu" class="text-gray-700 hover:text-rose-500 font-medium transition">Menu</a>
-                    <a href="#order" class="text-gray-700 hover:text-rose-500 font-medium transition">Pesan Sekarang</a>
-                    <a href="#contact" class="text-gray-700 hover:text-rose-500 font-medium transition">Kontak</a>
+                    <a href="#home" class="text-gray-700 hover:text-burgundy-500 font-medium transition">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:text-burgundy-500 font-medium transition">Tentang Kami</a>
+                    <a href="#menu" class="text-gray-700 hover:text-burgundy-500 font-medium transition">Menu</a>
+                    <a href="#order" class="text-gray-700 hover:text-burgundy-500 font-medium transition">Pesan Sekarang</a>
+                    <a href="#contact" class="text-gray-700 hover:text-burgundy-500 font-medium transition">Kontak</a>
                 </div>
             </div>
         </div>
@@ -406,7 +406,7 @@
                 <p class="text-xl mb-8 opacity-90">Kami menyediakan layanan catering profesional untuk pernikahan, acara perusahaan, acara instansi pemerintah/swasta, acara sekolah, dan berbagai acara spesial lainnya. Rasa autentik, presentasi menarik, dan layanan terbaik.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#menu" class="btn-primary text-white font-semibold py-3 px-8 rounded-lg text-center">Lihat Menu</a>
-                    <a href="#order" class="bg-white text-rose-600 font-semibold py-3 px-8 rounded-lg text-center hover:bg-gray-100 transition">Pesan Sekarang</a>
+                    <a href="#order" class="bg-white text-burgundy-600 font-semibold py-3 px-8 rounded-lg text-center hover:bg-gray-100 transition">Pesan Sekarang</a>
                 </div>
             </div>
         </div>
@@ -422,7 +422,7 @@
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center p-6 rounded-xl bg-soft-pink">
-                    <div class="text-rose-500 text-4xl mb-4">
+                    <div class="text-burgundy-500 text-4xl mb-4">
                         <i class="fas fa-medal"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Kualitas Terbaik</h3>
@@ -430,7 +430,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-xl bg-soft-pink">
-                    <div class="text-rose-500 text-4xl mb-4">
+                    <div class="text-burgundy-500 text-4xl mb-4">
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Pengalaman</h3>
@@ -438,7 +438,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-xl bg-soft-pink">
-                    <div class="text-rose-500 text-4xl mb-4">
+                    <div class="text-burgundy-500 text-4xl mb-4">
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Kepuasan Pelanggan</h3>
@@ -492,7 +492,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 350.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 350.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Tumpeng" data-price="350000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -522,7 +522,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 300.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 300.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Tumpeng Nasi Putih" data-price="300000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -545,7 +545,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 150.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 150.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Snack Tampahan" data-price="150000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -568,7 +568,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 150.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 150.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Angkringan Tampahan" data-price="150000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -594,7 +594,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 75.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 75.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Ayam/Bebek Utuh" data-price="75000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -620,7 +620,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 75.000</span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 75.000</span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Paket Sate & Gado-gado" data-price="75000" data-unit="paket">Pilih</button>
                             </div>
                         </div>
@@ -652,7 +652,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 15.000<span class="text-sm text-gray-500">/box</span></span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 15.000<span class="text-sm text-gray-500">/box</span></span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Nasi Box" data-price="15000" data-unit="box">Pilih</button>
                             </div>
                         </div>
@@ -679,7 +679,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 6.000<span class="text-sm text-gray-500">/pcs</span></span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 6.000<span class="text-sm text-gray-500">/pcs</span></span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Snack Box" data-price="6000" data-unit="box">Pilih</button>
                             </div>
                         </div>
@@ -705,7 +705,7 @@
                             </div>
                             
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-rose-600">mulai Rp 10.000<span class="text-sm text-gray-500">/bowl</span></span>
+                                <span class="text-2xl font-bold text-burgundy-600">mulai Rp 10.000<span class="text-sm text-gray-500">/bowl</span></span>
                                 <button class="menu-select btn-primary text-white font-medium py-2 px-4 rounded-lg transition text-sm" data-menu="Rice Bowl" data-price="10000" data-unit="bowl">Pilih</button>
                             </div>
                         </div>
@@ -732,21 +732,21 @@
                 <div class="mb-6">
                     <label class="block text-gray-700 font-medium mb-2" for="name">Nama Lengkap *</label>
                     <input type="text" id="name" name="name" required 
-                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500"
                            placeholder="Masukkan nama lengkap Anda">
                 </div>
                 
                 <div class="mb-6">
                     <label class="block text-gray-700 font-medium mb-2" for="phone">Nomor WhatsApp *</label>
                     <input type="tel" id="phone" name="phone" required 
-                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500"
                            placeholder="+6281234567890">
                 </div>
                 
                 <div class="mb-6">
                     <label class="block text-gray-700 font-medium mb-2" for="address">Alamat Acara *</label>
                     <textarea id="address" name="address" rows="3" required 
-                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500"
                               placeholder="Tuliskan alamat lengkap tempat acara"></textarea>
                 </div>
                 
@@ -754,13 +754,13 @@
                     <div>
                         <label class="block text-gray-700 font-medium mb-2" for="date">Tanggal Acara *</label>
                         <input type="date" id="date" name="date" required 
-                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500">
+                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500">
                     </div>
                     
                     <div>
                         <label class="block text-gray-700 font-medium mb-2" for="guests">Jumlah Tamu *</label>
                         <input type="number" id="guests" name="guests" min="10" required 
-                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500"
                                placeholder="Contoh: 100">
                     </div>
                 </div>
@@ -773,50 +773,50 @@
                             <h4 class="font-semibold text-gray-800 mb-2">Menu Paketan:</h4>
                             <div class="space-y-2 ml-2">
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-tumpeng-kuning" name="menu" value="Paket Tumpeng Nasi Kuning" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-tumpeng-kuning" name="menu" value="Paket Tumpeng Nasi Kuning" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-tumpeng-kuning" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Tumpeng Nasi Kuning</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 350.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 350.000</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-tumpeng-putih" name="menu" value="Paket Tumpeng Nasi Putih" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-tumpeng-putih" name="menu" value="Paket Tumpeng Nasi Putih" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-tumpeng-putih" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Tumpeng Nasi Putih</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 350.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 350.000</span>
                                     </label>
                                 </div>
 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-snack" name="menu" value="Paket Snack Tambahan" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-snack" name="menu" value="Paket Snack Tambahan" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-snack" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Snack Tambahan</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 150.000</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-angkringan" name="menu" value="Paket Angkringan Tambahan" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-angkringan" name="menu" value="Paket Angkringan Tambahan" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-angkringan" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Angkringan Tambahan</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 150.000</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-ayam-bebek" name="menu" value="Paket Ayam/Bebek Utuh" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-ayam-bebek" name="menu" value="Paket Ayam/Bebek Utuh" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-ayam-bebek" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Ayam/Bebek Utuh</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 75.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 75.000</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-paket-sate-gado" name="menu" value="Paket Sate & Gado-gado" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-paket-sate-gado" name="menu" value="Paket Sate & Gado-gado" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-paket-sate-gado" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Paket Sate & Gado-gado</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 150.000</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 150.000</span>
                                     </label>
                                 </div>
                             </div>
@@ -826,26 +826,26 @@
                             <h4 class="font-semibold text-gray-800 mb-2 mt-4">Menu Satuan:</h4>
                             <div class="space-y-2 ml-2">
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-nasi-box" name="menu" value="Nasi Box" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-nasi-box" name="menu" value="Nasi Box" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-nasi-box" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Nasi Box</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 15.000/box</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 15.000/box</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-snack-box" name="menu" value="Snack Box" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-snack-box" name="menu" value="Snack Box" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-snack-box" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Snack Box</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 6.000/pcs</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 6.000/pcs</span>
                                     </label>
                                 </div>
                                 
                                 <div class="flex items-center bg-white p-3 rounded-lg border border-gray-200">
-                                    <input type="radio" id="menu-rice-bowl" name="menu" value="Rice Bowl" class="h-5 w-5 text-rose-500 focus:ring-rose-400">
+                                    <input type="radio" id="menu-rice-bowl" name="menu" value="Rice Bowl" class="h-5 w-5 text-burgundy-500 focus:ring-burgundy-400">
                                     <label for="menu-rice-bowl" class="ml-3 flex-grow cursor-pointer">
                                         <span class="font-medium">Rice Bowl</span>
-                                        <span class="text-rose-600 font-bold ml-2">mulai Rp 10.000/bowl</span>
+                                        <span class="text-burgundy-600 font-bold ml-2">mulai Rp 10.000/bowl</span>
                                     </label>
                                 </div>
                             </div>
@@ -856,7 +856,7 @@
                 <div class="mb-8">
                     <label class="block text-gray-700 font-medium mb-2" for="notes">Catatan Tambahan</label>
                     <textarea id="notes" name="notes" rows="4" 
-                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-rose-500"
+                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-burgundy-500"
                               placeholder="Tuliskan permintaan khusus, alergi makanan, atau detail tambahan lainnya"></textarea>
                 </div>
                 
@@ -885,7 +885,7 @@
                     
                     <div class="space-y-4">
                         <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-rose-400 mt-1 mr-4"></i>
+                            <i class="fas fa-map-marker-alt text-burgundy-400 mt-1 mr-4"></i>
                             <div>
                                 <h4 class="font-medium">Alamat</h4>
                                 <p class="text-gray-300">Karangasem RT03/RW08 Pulutan Wonosari</p>
@@ -893,7 +893,7 @@
                         </div>
                         
                         <div class="flex items-start">
-                            <i class="fas fa-phone text-rose-400 mt-1 mr-4"></i>
+                            <i class="fas fa-phone text-burgundy-400 mt-1 mr-4"></i>
                             <div>
                                 <h4 class="font-medium">Telepon/WhatsApp</h4>
                                 <p class="text-gray-300">+62 877 3980 2296</p>
@@ -901,7 +901,7 @@
                         </div>
                         
                         <div class="flex items-start">
-                            <i class="fas fa-envelope text-rose-400 mt-1 mr-4"></i>
+                            <i class="fas fa-envelope text-burgundy-400 mt-1 mr-4"></i>
                             <div>
                                 <h4 class="font-medium">Email</h4>
                                 <p class="text-gray-300">dewimelly2570@gmail.com</p>
@@ -935,21 +935,21 @@
                             <!-- Instagram -->
                             <a href="https://www.instagram.com/dewimelly83?igsh=OG85dmN5OW1mYWxo" 
                             target="_blank"
-                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            class="bg-gray-700 hover:bg-burgundy-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-instagram"></i>
                             </a>
 
                             <!-- TikTok -->
                             <a href="https://www.tiktok.com/@danielregan23?_r=1&_t=ZS-92yG5aIrRlA" 
                             target="_blank"
-                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            class="bg-gray-700 hover:bg-burgundy-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-tiktok"></i>
                             </a>
 
                             <!-- Facebook -->
                             <a href="https://web.facebook.com/dewykenny.dewykenny?locale=id_ID" 
                             target="_blank"
-                            class="bg-gray-700 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            class="bg-gray-700 hover:bg-burgundy-600 w-10 h-10 rounded-full flex items-center justify-center transition">
                                 <i class="fab fa-facebook-f"></i>
                             </a>                           
                         </div>
@@ -963,7 +963,7 @@
                     
                     <form id="newsletter-form" class="space-y-3">
                         <input type="email" placeholder="Masukkan email Anda" required
-                               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                               class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-burgundy-500">
                         <button type="submit" class="btn-primary text-white font-medium py-3 px-6 rounded-lg w-full">Berlangganan</button>
                     </form>
                     
