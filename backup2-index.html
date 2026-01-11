@@ -23,110 +23,11 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #1e293b !important;
-        }
-        
-        .dark-mode .bg-gray-50 {
-            background-color: #0f172a !important;
-        }
-        
-        .dark-mode .bg-gray-800 {
-            background-color: #111827 !important;
-        }
-        
-        .dark-mode .text-gray-800 {
-            color: #e2e8f0 !important;
-        }
-        
-        .dark-mode .text-gray-700 {
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .text-gray-600 {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .text-gray-300 {
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .text-gray-400 {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .bg-gray-900 {
-            background-color: #0f172a !important;
-        }
-        
-        .dark-mode .border-gray-200 {
-            border-color: #334155 !important;
-        }
-        
-        .dark-mode .border-gray-300 {
-            border-color: #475569 !important;
-        }
-        
-        .dark-mode .bg-gray-700 {
-            background-color: #334155 !important;
-        }
-        
-        .dark-mode input,
-        .dark-mode textarea,
-        .dark-mode select {
-            background-color: #1e293b !important;
-            border-color: #475569 !important;
-            color: #e2e8f0 !important;
-        }
-        
-        .dark-mode input::placeholder,
-        .dark-mode textarea::placeholder {
-            color: #94a3b8 !important;
-        }
-        
-        .dark-mode .menu-tab {
-            background-color: #334155 !important;
-            color: #cbd5e1 !important;
-        }
-        
-        .dark-mode .menu-tab.active {
-            background-color: #e63973 !important;
-            color: white !important;
-        }
-        
-        .dark-mode .menu-tab:hover {
-            background-color: #475569 !important;
-        }
-        
-        .dark-mode .menu-card {
-            background-color: #1e293b !important;
-        }
-        
-        .dark-mode .bg-soft-pink {
-            background-color: #2d3748 !important;
-        }
-        
-        .dark-mode .navbar-scrolled {
-            background-color: rgba(15, 23, 42, 0.95) !important;
         }
         
         .navbar-scrolled {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode .navbar-scrolled {
-            background-color: rgba(15, 23, 42, 0.95) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .hero-section {
@@ -165,10 +66,6 @@
         .menu-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode .menu-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
         .form-input:focus {
@@ -274,75 +171,29 @@
         background-color: rgba(230, 57, 115, 0.05);
     }
 
-    .dark-mode input[type="radio"]:checked + label {
-        background-color: rgba(230, 57, 115, 0.1) !important;
-    }
-
     input[type="radio"]:checked + label .font-medium {
         color: #e63973;
     }
 
     /* Style untuk tombol WhatsApp */
-    .btn-primary-whatsapp {
+    .btn-primary {
         background-color: #25D366; /* WhatsApp green */
         transition: all 0.3s ease;
     }
 
-    .btn-primary-whatsapp:hover {
+    .btn-primary:hover {
         background-color: #128C7E;
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
     }
 
-    .btn-primary-whatsapp:active {
+    .btn-primary:active {
         transform: translateY(0);
     }
 
     /* Style untuk label radio yang bisa diklik */
     label.cursor-pointer:hover {
         background-color: rgba(0, 0, 0, 0.02);
-    }
-
-    .dark-mode label.cursor-pointer:hover {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    /* Dark Mode Toggle Button di Navbar */
-    .dark-mode-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: #4b5563;
-        margin-right: 12px;
-    }
-
-    .dark-mode-btn:hover {
-        transform: rotate(15deg);
-        color: #e63973;
-    }
-
-    .dark-mode .dark-mode-btn {
-        color: #cbd5e1;
-    }
-
-    .dark-mode .dark-mode-btn:hover {
-        color: #fbbf24;
-    }
-
-    /* Style untuk teks di dark mode */
-    .dark-mode .text-gray-500 {
-        color: #94a3b8 !important;
-    }
-
-    .dark-mode .border-gray-700 {
-        border-color: #475569 !important;
-    }
-
-    /* Smooth transition for all elements */
-    * {
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
     </style>
 </head>
@@ -351,22 +202,14 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
         <div class="container mx-auto px-4 md:px-8">
             <div class="flex justify-between items-center">
-                <!-- Logo dan Dark Mode Toggle -->
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <!-- Dark Mode Toggle Button -->
-                    <button id="darkModeToggle" class="dark-mode-btn mr-3">
-                        <i id="darkModeIcon" class="fas fa-moon text-lg"></i>
-                    </button>
-                    
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <div class="bg-rose-500 text-white p-2 rounded-lg mr-3">
-                            <i class="fas fa-utensils text-xl"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-2xl font-bold text-gray-800">Dewi Catering & Events</h1>
-                            <p class="text-sm text-gray-600">Profesional • Elegant • Terpercaya</p>
-                        </div>
+                    <div class="bg-rose-500 text-white p-2 rounded-lg mr-3">
+                        <i class="fas fa-utensils text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dewi Catering & Events</h1>
+                        <p class="text-sm text-gray-600">Profesional • Elegant • Terpercaya</p>
                     </div>
                 </div>
                 
@@ -863,7 +706,7 @@
                 <div class="text-center">
                     <!-- Tombol dengan onclick handler untuk mengirim data form ke WhatsApp -->
                     <button type="button" id="submit-whatsapp" 
-                            class="btn-primary-whatsapp text-white font-bold py-4 px-10 rounded-lg text-lg w-full md:w-auto inline-flex items-center justify-center">
+                            class="btn-primary text-white font-bold py-4 px-10 rounded-lg text-lg w-full md:w-auto inline-flex items-center justify-center">
                         <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
                     </button>
                     <p class="text-gray-500 text-sm mt-4">
@@ -1198,257 +1041,219 @@ Mohon info mengenai ketersediaan dan perkiraan biaya. Terima kasih.`;
             });
         });
 
-        // Fungsi untuk mengirim data form ke WhatsApp
-        function sendOrderToWhatsApp() {
-            // Ambil semua nilai dari form
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const date = document.getElementById('date').value;
-            const guests = document.getElementById('guests').value;
-            const notes = document.getElementById('notes').value.trim();
-            
-            // Ambil menu yang dipilih
-            const selectedMenu = document.querySelector('input[name="menu"]:checked');
-            const menu = selectedMenu ? selectedMenu.value : "Belum memilih menu";
-            
-            // Validasi form
-            if (!name || !phone || !address || !date || !guests || !selectedMenu) {
-                showToast('Harap lengkapi semua field yang wajib diisi!', 'error');
-                
-                // Highlight field yang kosong
-                if (!name) document.getElementById('name').classList.add('border-red-500');
-                if (!phone) document.getElementById('phone').classList.add('border-red-500');
-                if (!address) document.getElementById('address').classList.add('border-red-500');
-                if (!date) document.getElementById('date').classList.add('border-red-500');
-                if (!guests) document.getElementById('guests').classList.add('border-red-500');
-                if (!selectedMenu) {
-                    const menuLabels = document.querySelectorAll('input[name="menu"]');
-                    menuLabels.forEach(label => {
-                        label.closest('.flex.items-center').classList.add('border-red-500');
-                    });
-                }
-                
-                return;
-            }
-            
-            // Hapus highlight error jika ada
-            document.querySelectorAll('.border-red-500').forEach(el => {
-                el.classList.remove('border-red-500');
+// Fungsi untuk mengirim data form ke WhatsApp
+function sendOrderToWhatsApp() {
+    // Ambil semua nilai dari form
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const date = document.getElementById('date').value;
+    const guests = document.getElementById('guests').value;
+    const notes = document.getElementById('notes').value.trim();
+    
+    // Ambil menu yang dipilih
+    const selectedMenu = document.querySelector('input[name="menu"]:checked');
+    const menu = selectedMenu ? selectedMenu.value : "Belum memilih menu";
+    
+    // Validasi form
+    if (!name || !phone || !address || !date || !guests || !selectedMenu) {
+        showToast('Harap lengkapi semua field yang wajib diisi!', 'error');
+        
+        // Highlight field yang kosong
+        if (!name) document.getElementById('name').classList.add('border-red-500');
+        if (!phone) document.getElementById('phone').classList.add('border-red-500');
+        if (!address) document.getElementById('address').classList.add('border-red-500');
+        if (!date) document.getElementById('date').classList.add('border-red-500');
+        if (!guests) document.getElementById('guests').classList.add('border-red-500');
+        if (!selectedMenu) {
+            const menuLabels = document.querySelectorAll('input[name="menu"]');
+            menuLabels.forEach(label => {
+                label.closest('.flex.items-center').classList.add('border-red-500');
             });
-            
-            // Format tanggal
-            const formattedDate = new Date(date).toLocaleDateString('id-ID', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            // Format nomor WhatsApp (hilangkan + dan spasi)
-            const formattedPhone = phone.replace(/\s+/g, '').replace(/^\+/, '');
-            
-            // Buat pesan WhatsApp
-            const message = `*PESANAN CATERING - DEWI CATERING & EVENTS*
-            
-    *DATA PEMESANAN:*
-    👤 Nama Lengkap: ${name}
-    📱 Nomor WhatsApp: ${phone}
-    📍 Alamat Acara: ${address}
-    📅 Tanggal Acara: ${formattedDate}
-    👥 Jumlah Tamu: ${guests} orang
-    🍽️ Menu Dipilih: ${menu}
-    📝 Catatan Tambahan: ${notes || "Tidak ada catatan"}
-
-    _Saya ingin memesan catering dengan detail di atas. Mohon informasikan ketersediaan dan total biayanya. Terima kasih._`;
-            
-            // Encode pesan untuk URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Nomor WhatsApp tujuan (ganti dengan nomor bisnis sebenarnya)
-            const whatsappNumber = "6281384224733"; // Nomor dari link Anda
-            
-            // Buat URL WhatsApp
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Buka WhatsApp di tab baru
-            window.open(whatsappURL, '_blank');
-            
-            // Tampilkan konfirmasi
-            showToast('Mengarahkan ke WhatsApp dengan data pesanan Anda...', 'success');
-            
-            // Reset form (opsional)
-            // document.getElementById('order-form').reset();
         }
+        
+        return;
+    }
+    
+    // Hapus highlight error jika ada
+    document.querySelectorAll('.border-red-500').forEach(el => {
+        el.classList.remove('border-red-500');
+    });
+    
+    // Format tanggal
+    const formattedDate = new Date(date).toLocaleDateString('id-ID', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    // Format nomor WhatsApp (hilangkan + dan spasi)
+    const formattedPhone = phone.replace(/\s+/g, '').replace(/^\+/, '');
+    
+    // Buat pesan WhatsApp
+    const message = `*PESANAN CATERING - DEWI CATERING & EVENTS*
+    
+*DATA PEMESANAN:*
+👤 Nama Lengkap: ${name}
+📱 Nomor WhatsApp: ${phone}
+📍 Alamat Acara: ${address}
+📅 Tanggal Acara: ${formattedDate}
+👥 Jumlah Tamu: ${guests} orang
+🍽️ Menu Dipilih: ${menu}
+📝 Catatan Tambahan: ${notes || "Tidak ada catatan"}
 
-        // Fungsi untuk menampilkan toast notification
-        function showToast(message, type = 'info') {
-            // Hapus toast yang ada
-            const existingToast = document.querySelector('.toast-notification');
-            if (existingToast) {
-                existingToast.remove();
+_Saya ingin memesan catering dengan detail di atas. Mohon informasikan ketersediaan dan total biayanya. Terima kasih._`;
+    
+    // Encode pesan untuk URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Nomor WhatsApp tujuan (ganti dengan nomor bisnis sebenarnya)
+    const whatsappNumber = "6281384224733"; // Nomor dari link Anda
+    
+    // Buat URL WhatsApp
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Buka WhatsApp di tab baru
+    window.open(whatsappURL, '_blank');
+    
+    // Tampilkan konfirmasi
+    showToast('Mengarahkan ke WhatsApp dengan data pesanan Anda...', 'success');
+    
+    // Reset form (opsional)
+    // document.getElementById('order-form').reset();
+}
+
+// Fungsi untuk menampilkan toast notification
+function showToast(message, type = 'info') {
+    // Hapus toast yang ada
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    // Warna berdasarkan tipe
+    let bgColor = 'bg-blue-500';
+    if (type === 'error') bgColor = 'bg-red-500';
+    if (type === 'success') bgColor = 'bg-green-500';
+    if (type === 'warning') bgColor = 'bg-yellow-500';
+    
+    // Buat elemen toast
+    const toast = document.createElement('div');
+    toast.className = `${bgColor} toast-notification fixed top-6 right-6 px-6 py-4 rounded-lg shadow-lg text-white z-50 transform transition-all duration-300`;
+    toast.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'} mr-3"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Tambahkan ke body
+    document.body.appendChild(toast);
+    
+    // Animasi masuk
+    setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+    }, 3000);
+    
+    // Hapus setelah animasi
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+        }
+    }, 3500);
+}
+
+// Event listener untuk tombol WhatsApp
+document.addEventListener('DOMContentLoaded', function() {
+    // Tombol submit WhatsApp
+    const submitButton = document.getElementById('submit-whatsapp');
+    if (submitButton) {
+        submitButton.addEventListener('click', sendOrderToWhatsApp);
+    }
+    
+    // Set minimum date untuk input tanggal
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+        
+        // Set default date ke 3 hari dari sekarang
+        const threeDaysLater = new Date();
+        threeDaysLater.setDate(threeDaysLater.getDate() + 3);
+        dateInput.value = threeDaysLater.toISOString().split('T')[0];
+    }
+    
+    // Hapus error highlight saat user mulai mengisi
+    const formInputs = document.querySelectorAll('#order-form input, #order-form textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('border-red-500');
+            
+            // Untuk radio buttons
+            if (this.type === 'radio') {
+                const menuContainers = document.querySelectorAll('input[name="menu"]');
+                menuContainers.forEach(container => {
+                    container.closest('.flex.items-center').classList.remove('border-red-500');
+                });
             }
-            
-            // Warna berdasarkan tipe
-            let bgColor = 'bg-blue-500';
-            if (type === 'error') bgColor = 'bg-red-500';
-            if (type === 'success') bgColor = 'bg-green-500';
-            if (type === 'warning') bgColor = 'bg-yellow-500';
-            
-            // Buat elemen toast
-            const toast = document.createElement('div');
-            toast.className = `${bgColor} toast-notification fixed top-6 right-6 px-6 py-4 rounded-lg shadow-lg text-white z-50 transform transition-all duration-300`;
-            toast.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'} mr-3"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            // Tambahkan ke body
-            document.body.appendChild(toast);
-            
-            // Animasi masuk
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-            }, 3000);
-            
-            // Hapus setelah animasi
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.parentNode.removeChild(toast);
-                }
-            }, 3500);
-        }
-
-        // Dark Mode Functionality
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const darkModeIcon = document.getElementById('darkModeIcon');
-        
-        // Check for saved dark mode preference or use system preference
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        const savedMode = localStorage.getItem('darkMode');
-        
-        function enableDarkMode() {
-            document.body.classList.add('dark-mode');
-            darkModeIcon.classList.remove('fa-moon');
-            darkModeIcon.classList.add('fa-sun');
-            localStorage.setItem('darkMode', 'enabled');
-        }
-        
-        function disableDarkMode() {
-            document.body.classList.remove('dark-mode');
-            darkModeIcon.classList.remove('fa-sun');
-            darkModeIcon.classList.add('fa-moon');
-            localStorage.setItem('darkMode', 'disabled');
-        }
-        
-        // Set initial mode
-        if (savedMode === 'enabled' || (!savedMode && prefersDarkScheme.matches)) {
-            enableDarkMode();
-        } else {
-            disableDarkMode();
-        }
-        
-        // Toggle dark mode
-        darkModeToggle.addEventListener('click', function() {
-            if (document.body.classList.contains('dark-mode')) {
-                disableDarkMode();
+        });
+    });
+    
+    // Validasi real-time untuk nomor WhatsApp
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('blur', function() {
+            const phoneValue = this.value.trim();
+            if (phoneValue && !/^(\+62|62|0)[0-9]{9,12}$/.test(phoneValue)) {
+                showToast('Format nomor WhatsApp tidak valid. Contoh: +6281234567890', 'warning');
+                this.classList.add('border-yellow-500');
             } else {
-                enableDarkMode();
+                this.classList.remove('border-yellow-500');
             }
         });
-        
-        // Event listener untuk tombol WhatsApp
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tombol submit WhatsApp
-            const submitButton = document.getElementById('submit-whatsapp');
-            if (submitButton) {
-                submitButton.addEventListener('click', sendOrderToWhatsApp);
-            }
-            
-            // Set minimum date untuk input tanggal
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                const today = new Date().toISOString().split('T')[0];
-                dateInput.setAttribute('min', today);
+    }
+    
+    // Auto-select menu saat mengklik label
+    document.querySelectorAll('input[name="menu"] + label').forEach(label => {
+        label.addEventListener('click', function() {
+            const radioId = this.getAttribute('for');
+            const radioButton = document.getElementById(radioId);
+            if (radioButton) {
+                radioButton.checked = true;
                 
-                // Set default date ke 3 hari dari sekarang
-                const threeDaysLater = new Date();
-                threeDaysLater.setDate(threeDaysLater.getDate() + 3);
-                dateInput.value = threeDaysLater.toISOString().split('T')[0];
-            }
-            
-            // Hapus error highlight saat user mulai mengisi
-            const formInputs = document.querySelectorAll('#order-form input, #order-form textarea');
-            formInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    this.classList.remove('border-red-500');
-                    
-                    // Untuk radio buttons
-                    if (this.type === 'radio') {
-                        const menuContainers = document.querySelectorAll('input[name="menu"]');
-                        menuContainers.forEach(container => {
-                            container.closest('.flex.items-center').classList.remove('border-red-500');
-                        });
-                    }
+                // Hapus highlight error jika ada
+                document.querySelectorAll('input[name="menu"]').forEach(radio => {
+                    radio.closest('.flex.items-center').classList.remove('border-red-500');
                 });
-            });
-            
-            // Validasi real-time untuk nomor WhatsApp
-            const phoneInput = document.getElementById('phone');
-            if (phoneInput) {
-                phoneInput.addEventListener('blur', function() {
-                    const phoneValue = this.value.trim();
-                    if (phoneValue && !/^(\+62|62|0)[0-9]{9,12}$/.test(phoneValue)) {
-                        showToast('Format nomor WhatsApp tidak valid. Contoh: +6281234567890', 'warning');
-                        this.classList.add('border-yellow-500');
-                    } else {
-                        this.classList.remove('border-yellow-500');
-                    }
-                });
-            }
-            
-            // Auto-select menu saat mengklik label
-            document.querySelectorAll('input[name="menu"] + label').forEach(label => {
-                label.addEventListener('click', function() {
-                    const radioId = this.getAttribute('for');
-                    const radioButton = document.getElementById(radioId);
-                    if (radioButton) {
-                        radioButton.checked = true;
-                        
-                        // Hapus highlight error jika ada
-                        document.querySelectorAll('input[name="menu"]').forEach(radio => {
-                            radio.closest('.flex.items-center').classList.remove('border-red-500');
-                        });
-                        
-                        // Tampilkan konfirmasi
-                        const menuName = radioButton.value;
-                        showToast(`Anda memilih: ${menuName}`, 'success');
-                    }
-                });
-            });
-            
-            // Submit form dengan Enter (opsional)
-            document.getElementById('order-form').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && e.target.type !== 'textarea') {
-                    e.preventDefault();
-                }
-            });
-            
-            // Data contoh untuk pengujian (hapus di production)
-            document.getElementById('name').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('address').value = '';
-            document.getElementById('guests').value = '';
-            document.getElementById('notes').value = '';
-            
-            // Auto-select menu pertama untuk contoh
-            const firstMenu = document.getElementById('menu-paket-tumpeng-kuning');
-            if (firstMenu) {
-                firstMenu.checked = true;
+                
+                // Tampilkan konfirmasi
+                const menuName = radioButton.value;
+                showToast(`Anda memilih: ${menuName}`, 'success');
             }
         });
+    });
+    
+    // Submit form dengan Enter (opsional)
+    document.getElementById('order-form').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && e.target.type !== 'textarea') {
+            e.preventDefault();
+        }
+    });
+    
+    // Data contoh untuk pengujian (hapus di production)
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('address').value = '';
+    document.getElementById('guests').value = '';
+    document.getElementById('notes').value = '';
+    
+    // Auto-select menu pertama untuk contoh
+    const firstMenu = document.getElementById('menu-paket-tumpeng-kuning');
+    if (firstMenu) {
+        firstMenu.checked = true;
+    }
+});
     </script>
 </body>
 </html>
