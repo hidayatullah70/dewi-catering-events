@@ -206,6 +206,44 @@ body.dark-mode {
     border-radius: 50%;
 }
 
+/* FORM MENU SECTIONS - EQUAL WIDTH */
+.menu-section-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .menu-section-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Ensure both menu sections have equal width */
+.menu-section-container > div {
+    min-width: 0; /* Prevent grid items from overflowing */
+}
+
+/* BACK TO TOP BUTTON */
+#backToTop {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(121, 2, 42, 0.3);
+}
+
 /* MENU CARD HOVER */
 .menu-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;

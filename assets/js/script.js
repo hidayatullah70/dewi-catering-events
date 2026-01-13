@@ -127,6 +127,37 @@ function initializeMenuTabs() {
     });
 }
 
+// MENU SELECTION COUNTER AND CLEAR FUNCTION
+function initializeMenuCounter() {
+    const updateCounter = () => {
+        const selectedMenus = document.querySelectorAll('input[name="menu[]"]:checked');
+        const countElement = document.getElementById('selected-count');
+        if (countElement) {
+            countElement.textContent = selectedMenus.length;
+        }
+    };
+
+    // Update counter on any checkbox change
+    document.querySelectorAll('input[name="menu[]"]').forEach(checkbox => {
+        checkbox.addEventListener('change', updateCounter);
+    });
+
+    // Clear all button
+    const clearButton = document.getElementById('clear-all-menus');
+    if (clearButton) {
+        clearButton.addEventListener('click', function() {
+            document.querySelectorAll('input[name="menu[]"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updateCounter();
+            showToast('Semua pilihan menu telah dihapus', 'info');
+        });
+    }
+
+    // Initial counter update
+    updateCounter();
+}
+
 // MENU SELECTION BUTTONS
 function initializeMenuSelection() {
     document.querySelectorAll('.menu-select').forEach(button => {
@@ -135,43 +166,43 @@ function initializeMenuSelection() {
             const menuPrice = this.getAttribute('data-price');
             const menuUnit = this.getAttribute('data-unit') || 'paket';
             
-            // Map menu names to radio button IDs
-            let radioId = '';
+            // Map menu names to checkbox IDs
+            let checkboxId = '';
             switch(menuName) {
                 case 'Paket Tumpeng Nasi Kuning':
-                    radioId = 'menu-paket-tumpeng';
+                    checkboxId = 'menu-paket-tumpeng';
                     break;
                 case 'Paket Tumpeng Nasi Putih':
-                    radioId = 'menu-paket-tumpeng-putih';
+                    checkboxId = 'menu-paket-tumpeng-putih';
                     break;
                 case 'Paket Snack Tampahan':
-                    radioId = 'menu-paket-snack';
+                    checkboxId = 'menu-paket-snack';
                     break;
                 case 'Paket Angkringan Tampahan':
-                    radioId = 'menu-paket-angkringan';
+                    checkboxId = 'menu-paket-angkringan';
                     break;
                 case 'Paket Ayam/Bebek Utuh':
-                    radioId = 'menu-paket-ayam-bebek';
+                    checkboxId = 'menu-paket-ayam-bebek';
                     break;
                 case 'Paket Sate & Gado-Gado':
-                    radioId = 'menu-paket-sate';
+                    checkboxId = 'menu-paket-sate';
                     break;
                 case 'Nasi Box':
-                    radioId = 'menu-nasi-box';
+                    checkboxId = 'menu-nasi-box';
                     break;
                 case 'Snack Box':
-                    radioId = 'menu-snack-box';
+                    checkboxId = 'menu-snack-box';
                     break;
                 case 'Rice Bowl':
-                    radioId = 'menu-rice-bowl';
+                    checkboxId = 'menu-rice-bowl';
                     break;
                 default:
-                    radioId = 'menu-paket-tumpeng'; // Default fallback
+                    checkboxId = 'menu-paket-tumpeng'; // Default fallback
             }
             
-            const radioButton = document.getElementById(radioId);
-            if (radioButton) {
-                radioButton.checked = true;
+            const checkbox = document.getElementById(checkboxId);
+            if (checkbox) {
+                checkbox.checked = true;
             }
             
             // Scroll to order form
@@ -180,7 +211,7 @@ function initializeMenuSelection() {
             });
             
             // Show confirmation toast
-            showToast(`Anda memilih ${menuName} - Rp ${parseInt(menuPrice).toLocaleString('id-ID')}/${menuUnit}`);
+            showToast(`${menuName} ditambahkan ke pesanan Anda - Rp ${parseInt(menuPrice).toLocaleString('id-ID')}/${menuUnit}`);
         });
     });
 }
@@ -200,9 +231,25 @@ function initializeWhatsAppOrder() {
         const guests = document.getElementById('guests').value;
         const notes = document.getElementById('notes').value.trim();
         
-        // Get selected menu
-        const selectedMenu = document.querySelector('input[name="menu"]:checked');
-        const menu = selectedMenu ? selectedMenu.value : "Belum memilih menu";
+        // Get selected menus with quantities
+        const selectedMenus = document.querySelectorAll('input[name="menu[]"]:checked');
+        let menuList = [];
+        selectedMenus.forEach(checkbox => {
+            const menuValue = checkbox.value;
+            const checkboxId = checkbox.id;
+            const qtyId = checkboxId.replace('menu-', 'qty-');
+            const qtyInput = document.getElementById(qtyId);
+            const quantity = qtyInput ? qtyInput.value : '1';
+            
+            // Get unit based on menu type
+            let unit = 'paket';
+            if (menuValue.includes('Nasi Box')) unit = 'box';
+            else if (menuValue.includes('Snack Box')) unit = 'pcs';
+            else if (menuValue.includes('Rice Bowl')) unit = 'bowl';
+            
+            menuList.push(`${menuValue}: ${quantity} ${unit}`);
+        });
+        const menu = menuList.length > 0 ? menuList.join(', ') : "Belum memilih menu";
         
         // Validate required fields
         let isValid = true;
@@ -232,8 +279,8 @@ function initializeWhatsAppOrder() {
             isValid = false;
         }
         
-        if (!selectedMenu) {
-            showToast('Harap pilih menu yang diinginkan!', 'error');
+        if (menuList.length === 0) {
+            showToast('Harap pilih minimal satu menu!', 'error');
             isValid = false;
         }
         
@@ -373,6 +420,30 @@ function showToast(message, type = 'info') {
     }, 3000);
 }
 
+// BACK TO TOP BUTTON FUNCTIONALITY
+function initializeBackToTop() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    if (!backToTopButton) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 // INITIALIZE EVERYTHING WHEN DOM IS LOADED
 document.addEventListener('DOMContentLoaded', function() {
     initializeDarkMode();
@@ -380,10 +451,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScrolling();
     initializeNavbarScroll();
     initializeMenuTabs();
+    initializeMenuCounter();
     initializeMenuSelection();
     initializeWhatsAppOrder();
     initializeNewsletter();
     initializeFormHelpers();
+    initializeBackToTop();
     
     console.log('Dewi Catering & Events website initialized successfully!');
 });
