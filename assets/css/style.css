@@ -1,0 +1,221 @@
+:root {
+    --soft-pink: #f8e1e7;
+    --burgundy: #79022a;
+    --light-gray: #f5f5f0;
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+/* Override Tailwind untuk dark mode */
+.dark-mode .bg-white {
+    background-color: #1e293b !important;
+}
+
+.dark-mode .bg-gray-50,
+.dark-mode .bg-gray-100 {
+    background-color: #0f172a !important;
+}
+
+.dark-mode .text-gray-800,
+.dark-mode .text-gray-900 {
+    color: #e2e8f0 !important;
+}
+
+.dark-mode .text-gray-700 {
+    color: #cbd5e1 !important;
+}
+
+.dark-mode .text-gray-600 {
+    color: #94a3b8 !important;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+/* NAVBAR */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .navbar-scrolled {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+}
+
+/* HERO SECTION */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+                url('../images/gallery/logo-utama.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #79022a;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        background-attachment: scroll;
+        min-height: 80vh;
+    }
+}
+
+/* SECTION TITLE */
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background-color: #79022a;
+    bottom: -10px;
+    left: 20%;
+    border-radius: 2px;
+}
+
+.dark-mode .section-title::after {
+    background-color: #c5305c !important;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background-color: #79022a;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #670123;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(121, 2, 42, 0.3);
+}
+
+/* MENU TABS */
+.menu-tab {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.menu-tab.active {
+    background-color: #79022a;
+    color: white;
+    border-color: #79022a;
+}
+
+/* FORM */
+.form-input:focus {
+    border-color: #79022a;
+    box-shadow: 0 0 0 3px rgba(121, 2, 42, 0.2);
+    outline: none;
+}
+
+/* WHATSAPP BUTTON */
+.btn-primary-whatsapp {
+    background-color: #25D366;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* ABOUT SECTION DARK MODE FIXES */
+.dark-mode #about .bg-white {
+    background-color: #374151 !important;
+    border: 1px solid #4b5563 !important;
+}
+
+.dark-mode #about .text-gray-800 {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.dark-mode #about .text-gray-700 {
+    color: #ffffff !important;
+}
+
+.dark-mode #about .text-gray-600 {
+    color: #ffffff !important;
+}
+
+.dark-mode #about .bg-pink-50 {
+    background-color: #374151 !important;
+    border: 1px solid #4b5563 !important;
+}
+
+.dark-mode #about .border {
+    border-color: #4b5563 !important;
+}
+
+.dark-mode #about .section-title {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.dark-mode #about .section-title::after {
+    background-color: #ffffff !important;
+}
+
+.dark-mode #about .font-bold {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.dark-mode #about .text-xl {
+    color: #ffffff !important;
+}
+.dark-mode-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4b5563;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* MENU CARD HOVER */
+.menu-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .menu-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
