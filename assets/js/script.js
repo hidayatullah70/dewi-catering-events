@@ -320,7 +320,7 @@ _Saya ingin memesan catering dengan detail di atas. Mohon informasikan ketersedi
         const encodedMessage = encodeURIComponent(message);
         
         // WhatsApp number
-        const whatsappNumber = "6281384224733";
+        const whatsappNumber = "6287739802296";
         
         // Create WhatsApp URL
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
